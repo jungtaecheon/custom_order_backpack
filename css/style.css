@@ -1,0 +1,747 @@
+@charset "UTF-8";
+/* 楽天にアップロードするときは EUC-JP に変更する必要あり */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.warning-font{
+    color: rgb(179, 0, 0);
+}
+
+/* デバッグ 削除予定 */
+#debug_mode{
+    position:absolute;
+    left: 10px;
+    top: 70px;
+}
+/* div {
+    border-style: solid;
+    border-width: 0.1px;
+} */
+
+/* モーダル */
+.modal{
+    z-index: 10;
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+.modal__bg{
+    z-index: 10;
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+}
+.modal__content{
+    z-index: 10;
+    background: #fff;
+    left: 50%;
+    padding: 30px;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    width: 60%;
+    height: 50%;
+    overflow-y: scroll;
+}
+
+.modal_header_font{
+    text-align: center;
+    font-size: 20px;
+}
+
+/* シミュレーション コンテナ */
+.simulation-container{
+    position: relative;
+    top: 70px;
+    left: 0px;
+    width: 60vw;
+    height: auto;
+    background: #fff;
+}
+
+.glove-parts, .glove-palm-parts{
+    mix-blend-mode: multiply;
+}
+
+.glove-simulation{
+    background: #fff;
+    background-image:url(../img/grove.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80%;
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
+.logo-svg {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+.glove-palm-simulation{
+    background-image:url(../img/grove-palm.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 35%;
+    position: absolute;
+    bottom: 25px;
+    right: 0px;
+}
+
+.glove-parts-selector{
+    width: 11vw;
+    height: 80%;
+    position: absolute;
+    top: 70px;
+    left: 49vw;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+/* インプットパネル コンテナ */
+.control-panel-container{
+    position: absolute;
+    width: 40vw;
+    height: 100vh;
+    right: 0px;
+    top: 0px;
+    background: #fff;
+}
+
+.control-panel-header{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    text-align:center;
+    background-color: #012F3D;
+}
+
+.panel-header{
+    color: #FFF;
+    font-size: 20px;
+    line-height: 50px;
+}
+
+.control-panel-contents{
+    position: relative;
+    height: 100%;
+    background-color: #F6F1EE;
+    overflow: scroll;
+}
+
+.next-step-button{
+    position: absolute;
+    top: -62px;
+    right: 0;
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    background: #d8d8d8;
+    color: #fff;
+    padding: 9px 9px;
+    margin-right: 10px;
+    font-size: 14px;
+    z-index: 1;
+}
+
+.back-step-button{
+    position: absolute;
+    top: -62px;
+    right: 90px;
+    appearance: none;
+    border: 0;
+    border-radius: 5px;
+    background: #d8d8d8;
+    color: #fff;
+    padding: 9px 9px;
+    font-size: 14px;
+    z-index: 1;
+}
+
+.next-step-button:hover, .back-step-button:hover{
+    cursor : pointer;
+}
+
+.progress-status-area{
+    width: 60vw;
+    height: 70px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff;
+}
+
+.progressbar {
+    counter-reset: step;
+    z-index: 0;
+    position: relative;
+    /* margin: 0; */
+    padding: 0;
+}
+.progressbar li {
+    list-style-type: none;
+    width: 23%;
+    float: left;
+    font-size: 12px;
+    position: relative;
+    text-align: center;
+    text-transform: uppercase;
+    color: #aaa;
+}
+.progressbar li:before {
+    width: 24px;
+    height: 24px;
+    content: counter(step);
+    counter-increment: step;
+    line-height: 24px;
+    display: block;
+    text-align: center;
+    margin: 0 auto 5px auto;
+    border-radius: 50%;
+    background-color: #eee;
+    cursor: pointer;
+}
+.progressbar li:after {
+    width: 100%;
+    height: 2px;
+    content: '';
+    position: absolute;
+    background-color: #eee;
+    top: 12px;
+    left: -50%;
+    z-index: -1;
+}
+.progressbar li:first-child:after {
+    content: none;
+}
+.progressbar li.active {
+    color: black;
+}
+.progressbar li.active:before {
+    background-color: #55b776;
+    color:#fff;
+}
+.progressbar li.active + li:after {
+    background-color: #55b776;
+}
+.progressbar li.current:before {
+    background-color: #f6f87b;
+    color: rgb(85, 85, 85);
+}
+
+.parts-selector-img {
+    width: 90%;
+    background-color: #f0f0f0;
+    border-radius: 20%;
+    border: 1px solid #cecece;
+}
+
+.glove-parts-selector img.current {
+    box-shadow: 2px 2px 8px #fbff00;
+}
+
+.glove-parts-selector img.clear {
+    /* border: 2px solid #009b0d; */
+    box-shadow: 2px 2px 8px #1c9e22;
+}
+
+.parts-selector-img:hover {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, .5);
+    cursor: pointer;
+}
+
+/*
+ * control-panel
+ */
+input[type="checkbox"]{
+    display: none;
+}
+
+.control-panel-step{
+    padding: 10px;
+    overflow: scroll;
+}
+
+.control-panel-explain{
+    position: relative;
+    margin-top: 30px;
+    font-size: 12px;
+    color:#707070;
+    margin: 10px;
+}
+
+.control-panel-explain-list{
+    padding: 0;
+}
+
+.sub-title-div{
+    position: relative;
+}
+
+.sub-title{
+    /* margin: 0; */
+    margin-left: 18px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* STEP1 */
+.control-panel-step-2-select-list{
+    position: relative;
+    display: flex;
+    flex-wrap : wrap;
+}
+
+.control-panel-select-item-label-step1{
+    position: relative;
+    background-color: #dddddd;
+    text-align: center;
+    cursor: pointer;
+    width: 80px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    margin: 5px;
+}
+
+.control-panel-select-item-label-step1:hover{
+    background-color: #012F3D;
+    color: #FFF;
+}
+
+.select-circle{
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    top: 40%;
+    left: 50%;
+    transform: translateY(-40%) translateX(-50%);
+    -webkit-transform: translateY(-40%) translateX(-50%);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.select-circle-tag{
+    margin: 0;
+    position: relative;
+    font-size: 11px;
+    margin-top: 20px;
+}
+
+/* STEP2 */
+/* トグルボタン */
+ /* === ボタンを表示するエリア ============================== */
+.switchArea {
+line-height    : 30px;                /* 1行の高さ          */
+letter-spacing : 0;                   /* 文字間             */
+text-align     : center;              /* 文字位置は中央     */
+font-size      : 14px;                /* 文字サイズ         */
+position       : relative;            /* 親要素が基点       */
+width          : 69px;               /* ボタンの横幅       */
+background     : #F6F1EE;                /* デフォルト背景色   */
+margin-left: 10px;
+margin-bottom: 10px;
+}
+
+/* === チェックボックス ==================================== */
+.switchArea input[type="checkbox"] {
+display        : none;            /* チェックボックス非表示 */
+}
+
+/* === チェックボックスのラベル（標準） ==================== */
+.switchArea label {
+display        : block;               /* ボックス要素に変更 */
+box-sizing     : border-box;          /* 枠線を含んだサイズ */
+height         : 30px;                /* ボタンの高さ       */
+border         : 2px solid #999999;   /* 未選択タブのの枠線 */
+border-radius  : 15px;                /* 角丸               */
+cursor: pointer;
+}
+
+/* === チェックボックスのラベル（ONのとき） ================ */
+.switchArea input[type="checkbox"]:checked +label {
+border-color   : #78bd78;             /* 選択タブの枠線     */
+}
+
+/* === 表示する文字（標準） ================================ */
+.switchArea label span:after{
+content        : "なし";               /* 表示する文字       */
+padding        : 0 0 0 18px;          /* 表示する位置       */
+color          : #999999;             /* 文字色             */
+}
+
+/* === 表示する文字（ONのとき） ============================ */
+.switchArea  input[type="checkbox"]:checked + label span:after{
+content        : "あり";                /* 表示する文字       */
+padding        : 0 18px 0 0;          /* 表示する位置       */
+color          : #78bd78;             /* 文字色             */
+}
+
+/* === 丸部分のSTYLE（標準） =============================== */
+.switchArea #swImg {
+position       : absolute;            /* 親要素からの相対位置*/
+width          : 22px;                /* 丸の横幅           */
+height         : 22px;                /* 丸の高さ           */
+background     : #999999;             /* カーソルタブの背景 */
+top            : 4px;                 /* 親要素からの位置   */
+left           : 4px;                 /* 親要素からの位置   */
+border-radius  : 11px;                /* 角丸               */
+transition     : .2s;                 /* 滑らか変化         */
+}
+
+/* === 丸部分のSTYLE（ONのとき） =========================== */
+.switchArea input[type="checkbox"]:checked ~ #swImg {
+transform      : translateX(39px);    /* 丸も右へ移動       */
+background     : #78bd78;             /* カーソルタブの背景 */
+}
+
+
+.panel-on-name-type-img{
+    width: 100%;
+    position: relative;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.panel-on-name-type-img-tag{
+    margin: 0;
+    position: relative;
+}
+
+/* 右手 */
+.control-panel-step-6-select-list-on-name-type{
+    display: flex;
+    flex-wrap : wrap;
+    width: 100%;
+}
+
+.control-panel-select-item-on-name-type-label-step2{
+    flex-shrink: 0; /* 潰れないように */
+    margin: 10px;
+    text-align: center;
+    width: 35%;
+    position: relative;
+    background-color: #dddddd;
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+}
+
+.control-panel-select-item-on-name-type-label-step2:hover{
+    background-color: #012F3D;
+    color: #FFF;
+}
+
+#panel_select_on_name_text{
+    width: 100%; /*親要素いっぱい広げる*/
+    padding: 10px 15px; /*ボックスを大きくする*/
+    font-size: 16px;
+    border-radius: 3px; /*ボックス角の丸み*/
+    border: 2px solid #ddd; /*枠線*/
+    box-sizing: border-box; /*横幅の解釈をpadding, borderまでとする*/
+}
+
+.control-panel-select-item-on-name-color-label-step2{
+    position: relative;
+    background-color: #dddddd;
+    text-align: center;
+    cursor: pointer;
+    width: 80px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    margin: 5px;
+}
+
+.control-panel-select-item-on-name-color-label-step2:hover{
+    background-color: #012F3D;
+    color: #FFF;
+}
+.control-panel-step-6-select-list-on-name-color{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* STEP3 */
+.control-panel-step-7-select-list{
+    padding: 20px 30px 20px 30px;
+}
+
+.head-caution-area{
+    font-size: 16px;
+}
+
+.agree-contents-ul li{
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+.final-caution-area{
+    background-color: #FFF;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgb(155, 155, 155);
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.panel-select-agree-div{
+    position: relative;
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* チェックボックス01 */
+input[type=checkbox].panel-select-agree {
+    display: none;
+}
+.panel-select-agree-text-label {
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    padding: 5px 30px;
+    position: relative;
+    width: auto;
+    font-weight: bold;
+    font-size: 18px;
+}
+.panel-select-agree-text-label::before {
+    background: #FFF;
+    border: 2px solid rgb(155, 155, 155);
+    border-radius: 7px;
+    content: '';
+    display: block;
+    height: 30px;
+    left: 5px;
+    margin-top: -16px;
+    position: absolute;
+    top: 50%;
+    width: 30px;
+}
+.panel-select-agree-text-label::after {
+    border-right: 8px solid #78f741;
+    border-bottom: 8px solid #78f741;
+    content: '';
+    display: block;
+    height: 20px;
+    left: 13px;
+    margin-top: -16px;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    transform: rotate(45deg);
+    width: 10px;
+}
+input[type=checkbox]:checked + .panel-select-agree-text-label::after {
+    opacity: 1;
+}
+
+.panel-select-agree-text{
+    padding-left: 20px;
+}
+
+@media (max-width: 768px) {
+    body {
+        background-color: #F6F1EE;
+    }
+
+    /* デバッグ　削除予定 */
+    #debug_mode{
+        position:absolute;
+        left: 10px;
+        top: 70px;
+    }
+
+    .sub-title{
+        margin: 0;
+        margin-left: 10px;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+
+    .control-panel-contents{
+        position: relative;
+        margin-top: 0px;
+        height: 100%;
+        background-color: #F6F1EE;
+        overflow: scroll;
+    }
+
+    .control-panel-header{
+        height: 40px;
+    }
+
+    .panel-header{
+        font-size: 18px;
+        line-height: 40px;
+    }
+
+    .simulation-container{
+        /* メインコンテナ中央寄せ */
+        margin: 0 auto;
+        width: 100vw;
+        height: auto;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .glove-simulation{
+        width: 100%;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .control-panel-container{
+        position: relative;
+        width: 100vw;
+        margin-top: 60px;
+        height: auto;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .progress-status-area{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        width: 100%;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .next-step-button {
+        top: 45px;
+        right: 10px;
+        padding: 9px 9px;
+        font-size: 14px;
+        margin: 0px;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .back-step-button {
+        top: 0px;
+        right: 10px;
+        padding: 9px 9px;
+        font-size: 14px;
+        margin: 0px;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .progressbar li {
+        width: 30%;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    /* control-panel */
+    /* STEP1 */
+    .glove-parts-selector{
+        width: 100vw;
+        height: 80px;
+        position: relative;
+        display: flex;
+        top: 60px;
+        left: 0px;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+        background-color: #FFF;
+        padding: 0;
+    }
+
+    .parts-selector-img {
+        height: 90%;
+        background-color: #f0f0f0;
+        margin: 0;
+        margin-left: 5px;
+        margin-right: 5px;
+        -webkit-transition: all 500ms ease;
+        -moz-transition: all 500ms ease;
+        transition: all 500ms ease;
+    }
+
+    .control-panel-step-2-select-list{
+        flex-wrap : nowrap;
+    }
+
+    .control-panel-select-item-label-step1{
+        flex-shrink: 0; /* 潰れないように */
+        width: 80px;
+    }
+
+    /* STEP2 */
+    /* 右手 */
+    .control-panel-select-item-on-name-type-label-step2{
+        width: 120px;
+    }
+
+    .control-panel-step-6-select-list-on-name-type{
+        flex-wrap : nowrap;
+    }
+
+    .control-panel-step-6-select-list-on-name-color{
+        flex-wrap: nowrap;
+    }
+
+    .control-panel-select-item-on-name-color-label-step2{
+        flex-shrink: 0; /* 潰れないように */
+        width: 80px;
+    }
+}
+
+.color-white{background-color: #FFF}
+.color-black{background-color:#222}
+.color-red{background-color:#af1616}
+.color-mred{background-color:#af1616}
+.color-navy{background-color:#292f42}
+.color-mnavy{background-color:#292f42}
+.color-blue{background-color:#0c3c75}
+.color-silver{background-color:#EEE}
+.color-gold{background-color:#ccb35f}
+.color-lime{background-color:#b7f750}
+.color-gray{background-color:#807e7e}
+.color-green{background-color:#018001}
+.color-yellow{background-color:#faea3c}
+.color-orange{background-color:#e94f02}
+.color-pink{background-color:#f873ad}
+.color-purple{background-color:#6e3796}
+.color-skyblue{background-color: #2f9dcf;}
+
+.parts-color-white{fill: #FFF;}
+.parts-color-black{fill:#222}
+.parts-color-red{fill:#af1616}
+.parts-color-mred{fill:#af1616}
+.parts-color-navy{fill:#292f42}
+.parts-color-mnavy{fill:#292f42}
+.parts-color-blue{fill:#0c3c75}
+.parts-color-silver{fill:#EEE}
+.parts-color-gold{fill:#ccb35f}
+.parts-color-lime{fill:#b7f750}
+.parts-color-gray{fill:#807e7e}
+.parts-color-green{fill:#018001}
+.parts-color-yellow{fill:#faea3c}
+.parts-color-orange{fill:#e94f02}
+.parts-color-pink{fill:#f873ad}
+.parts-color-purple{fill:#6e3796}
+.parts-color-skyblue{fill: #2f9dcf;}
