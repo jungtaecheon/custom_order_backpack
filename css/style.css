@@ -874,8 +874,12 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     .control-panel-step-2-select-list-sishu-team-text-type{
         flex-wrap : nowrap;
     }
-    /* チーム名 */
+    /* 名前 */
     .control-panel-step-2-select-list-sishu-name-text-type{
+        flex-wrap : nowrap;
+    }
+    /* 番号 */
+    .control-panel-step-2-select-list-sishu-number-text-type{
         flex-wrap : nowrap;
     }
 }

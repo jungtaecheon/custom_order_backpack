@@ -513,50 +513,44 @@ $(function() {
 
             $('#next_step_button').attr('type', 'button');
         }else{
-            if(debug_mode){
-                // 刺繍の文字は最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
-                $('#panel_select_sishu_text_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_sishu_text').val() );
+
+            // 完了を押した場合
+            if($.inArray(false, clear_flug_arr_of_step) == -1 || debug_mode) {
+                // すべてクリアした場合
+                // テキストは最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
+
+                // チーム名
+                if( $('#panel_select_sishu_team_text').val().length > 0 ){
+                    $('#panel_select_sishu_team_text_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_sishu_team_text').val() );
+                }else{
+                    $('#panel_select_sishu_team_text_hidden').prop('disabled', true);
+                }
+
+                // 名前+(スペース)+番号
+                let name = '';
+
+                if( $('#panel_select_sishu_name_text').val().length > 0 ){
+                    name += $('#panel_select_sishu_name_text').val();
+                }
+
+                if( $('#panel_select_sishu_number_text').val().length > 0 ){
+                    if( name != '' ){
+                        name += ' ';
+                    }
+                    name += $('#panel_select_sishu_number_text').val();
+                }
+
+                if( name != '' ){
+                    $('#panel_select_sishu_name_text_hidden').val( '●【あああああああああああ】:'+ name );
+                }else{
+                    $('#panel_select_sishu_name_text_hidden').prop('disabled', true);
+                }
 
                 // buttonをtype=submitにする
                 $('#next_step_button').attr('type', 'submit');
-            }else{
-
-                // 完了を押した場合
-                if($.inArray(false, clear_flug_arr_of_step) == -1 || debug_mode) {
-                    // すべてクリアした場合
-                    // テキストは最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
-
-                    // チーム名
-                    if( $('#panel_select_sishu_team_text').val().length > 0 ){
-                        $('#panel_select_sishu_team_text_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_sishu_team_text').val() );
-                    }else{
-                        $('#panel_select_sishu_team_text_hidden').prop('disabled', true);
-                    }
-
-                    // 名前+(スペース)+番号
-                    let name = '';
-
-                    if( $('#panel_select_sishu_name_text').val().length > 0 ){
-                        name += $('#panel_select_sishu_name_text').val();
-                    }
-
-                    if( $('#panel_select_sishu_number_text').val().length > 0 ){
-                        name += ' ';
-                        name += $('#panel_select_sishu_name_text').val();
-                    }
-
-                    if( name != '' ){
-                        $('#panel_select_sishu_name_text_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ name );
-                    }else{
-                        $('#panel_select_sishu_name_text_hidden').prop('disabled', true);
-                    }
-
-                    // buttonをtype=submitにする
-                    $('#next_step_button').attr('type', 'submit');
-                } else {
-                    alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
-                    $('#next_step_button').attr('type', 'button');
-                }
+            } else {
+                alert(`STEP${$.inArray(false, clear_flug_arr_of_step)+1}がまだ完了しておりません。`);
+                $('#next_step_button').attr('type', 'button');
             }
         }
     });
