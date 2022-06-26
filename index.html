@@ -685,8 +685,34 @@
                             </div>
                         </div>
 
+                        <div class="step2-sub-title">
+                            <p>チーム名</p>
+                        </div>
+                        <div class="control-panel-step" id="control_panel_step_2_sishu_team_text_type" style="display: none;">
+                            <p>チーム名) 刺繍タイプ</p>
+                            <div class="control-panel-step-2-select-list-sishu-team-text-type" id="control_panel_step_2_select_list_sishu_team_text_type">
+                                <!-- チェックボックスは非表示 -->
+                                <input type="checkbox" class="panel-select-sishu-team-text-type" id="panel_select_sishu_team_text_type_1" name="choice" value="●ああ:右手.タイプ-漢字、かな、カナ">
+                                <input type="checkbox" class="panel-select-sishu-team-text-type" id="panel_select_sishu_team_text_type_2" name="choice" value="●ああ:右手.タイプ-ローマ字活字体">
+                                <input type="checkbox" class="panel-select-sishu-team-text-type" id="panel_select_sishu_team_text_type_3" name="choice" value="●ああ:右手.タイプ-ローマ字活字体">
+
+                                <!-- labelをチェックボックスに紐付ける -->
+                                <label for="panel_select_sishu_team_text_type_1" class="control-panel-select-item-sishu-team-text-type-label-step2">
+                                    <img class="panel-sishu-text-type-img" src="img/sishu_team_text_type_1.png">
+                                    <p class="panel-sishu-text-type-img-tag">K型</p>
+                                </label>
+                                <label for="panel_select_sishu_team_text_type_2" class="control-panel-select-item-sishu-team-text-type-label-step2">
+                                    <img class="panel-sishu-text-type-img" src="img/sishu_team_text_type_2.png">
+                                    <p class="panel-sishu-text-type-img-tag">フルブロック</p>
+                                </label>
+                                <label for="panel_select_sishu_team_text_type_3" class="control-panel-select-item-sishu-team-text-type-label-step2">
+                                    <p class="panel-sishu-text-type-img-tag panel-sishu-text-type-img-tag-none">なし</p>
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="control-panel-step" id="control_panel_step_2_sishu_shotai" style="display: none;">
-                            <p>書体</p>
+                            <p>チーム名) 書体</p>
                             <div class="control-panel-step-2-select-list-sishu-shotai" id="control_panel_step_2_select_list_sishu_shotai">
                                 <!-- チェックボックスは非表示 -->
                                 <input type="checkbox" class="panel-select-sishu-shotai" id="panel_select_sishu_shotai_1" name="choice" value="●ああ:右手.タイプ-漢字、かな、カナ">
@@ -850,7 +876,7 @@
                         </div>
 
                         <div class="control-panel-step" id="control_panel_step_2_sishu_text_color" style="display: none;">
-                            <p>文字カラー</p>
+                            <p>チーム名) 文字カラー</p>
                             <div class="control-panel-step-2-select-list-sishu-text-color">
                                 <!-- チェックボックスは非表示 -->
                                 <input type="checkbox" class="panel-select-sishu-text-color" id="panel_select_sishu_text_color_white" name="choice" value="●ああ:右手.カラー-ホワイト">
@@ -929,7 +955,7 @@
                         </div>
 
                         <div class="control-panel-step" id="control_panel_step_2_sishu_text_side_color" style="display: none;">
-                            <p>縁カラー</p>
+                            <p>チーム名) 縁カラー</p>
                             <div class="control-panel-step-2-select-list-sishu-text-side-color">
                                 <!-- チェックボックスは非表示 -->
                                 <input type="checkbox" class="panel-select-sishu-text-side-color" id="panel_select_sishu_text_side_color_white" name="choice" value="●ああ:右手.カラー-ホワイト">
@@ -1007,31 +1033,8 @@
                             </div>
                         </div>
 
-                        <div class="control-panel-step" id="control_panel_step_2_sishu_team_text_type" style="display: none;">
-                            <p>チーム名-刺繍タイプ</p>
-                            <div class="control-panel-step-2-select-list-sishu-team-text-type" id="control_panel_step_2_select_list_sishu_team_text_type">
-                                <!-- チェックボックスは非表示 -->
-                                <input type="checkbox" class="panel-select-sishu-team-text-type" id="panel_select_sishu_team_text_type_1" name="choice" value="●ああ:右手.タイプ-漢字、かな、カナ">
-                                <input type="checkbox" class="panel-select-sishu-team-text-type" id="panel_select_sishu_team_text_type_2" name="choice" value="●ああ:右手.タイプ-ローマ字活字体">
-                                <input type="checkbox" class="panel-select-sishu-team-text-type" id="panel_select_sishu_team_text_type_3" name="choice" value="●ああ:右手.タイプ-ローマ字活字体">
-
-                                <!-- labelをチェックボックスに紐付ける -->
-                                <label for="panel_select_sishu_team_text_type_1" class="control-panel-select-item-sishu-team-text-type-label-step2">
-                                    <img class="panel-sishu-text-type-img" src="img/sishu_team_text_type_1.png">
-                                    <p class="panel-sishu-text-type-img-tag">K型</p>
-                                </label>
-                                <label for="panel_select_sishu_team_text_type_2" class="control-panel-select-item-sishu-team-text-type-label-step2">
-                                    <img class="panel-sishu-text-type-img" src="img/sishu_team_text_type_2.png">
-                                    <p class="panel-sishu-text-type-img-tag">フルブロック</p>
-                                </label>
-                                <label for="panel_select_sishu_team_text_type_3" class="control-panel-select-item-sishu-team-text-type-label-step2">
-                                    <p class="panel-sishu-text-type-img-tag panel-sishu-text-type-img-tag-none">なし</p>
-                                </label>
-                            </div>
-                        </div>
-
                         <div class="control-panel-step" id="control_panel_step_2_sishu_team_text" style="display: none;">
-                            <p>チーム名</p>
+                            <p>チーム名) テキスト</p>
                             <div class="control-panel-step-2-select-list-sishu-team-text">
                                 <input type="text" placeholder="例: MIZUNO" id="panel_select_sishu_team_text" autocomplete="off" disabled>
                                 <input type="hidden" id="panel_select_sishu_team_text_hidden" name="choice">
@@ -1044,8 +1047,11 @@
                             </div>
                         </div>
 
+                        <div class="step2-sub-title">
+                            <p>名前+番号</p>
+                        </div>
                         <div class="control-panel-step" id="control_panel_step_2_sishu_name_text_type" style="display: none;">
-                            <p>名前-刺繍タイプ</p>
+                            <p>名前) 刺繍タイプ</p>
                             <div class="control-panel-step-2-select-list-sishu-name-text-type" id="control_panel_step_2_select_list_sishu_name_text_type">
                                 <!-- チェックボックスは非表示 -->
                                 <input type="checkbox" class="panel-select-sishu-name-text-type" id="panel_select_sishu_name_text_type_1" name="choice" value="●ああ:右手.タイプ-漢字、かな、カナ">
@@ -1073,7 +1079,7 @@
                         </div>
 
                         <div class="control-panel-step" id="control_panel_step_2_sishu_number_text_type" style="display: none;">
-                            <p>番号-刺繍タイプ</p>
+                            <p>番号) 刺繍タイプ</p>
                             <div class="control-panel-step-2-select-list-sishu-number-text-type" id="control_panel_step_2_select_list_sishu_number_text_type">
                                 <!-- チェックボックスは非表示 -->
                                 <input type="checkbox" class="panel-select-sishu-number-text-type" id="panel_select_sishu_number_text_type_1" name="choice" value="●ああ:右手.タイプ-漢字、かな、カナ">
@@ -1095,8 +1101,87 @@
                             </div>
                         </div>
 
+                        <div class="control-panel-step" id="control_panel_step_2_sishu_name_text_color" style="display: none;">
+                            <p>名前+番号) 文字カラー</p>
+                            <div class="control-panel-step-2-select-list-sishu-name-text-color">
+                                <!-- チェックボックスは非表示 -->
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_text_name_color_white" name="choice" value="●ああ:右手.カラー-ホワイト">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_silver" name="choice" value="●ああ:右手.カラー-シルバー">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_black" name="choice" value="●ああ:右手.カラー-ブラック">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_navy" name="choice" value="●ああ:右手.カラー-ネイビー">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_pnavy" name="choice" value="●ああ:右手.カラー-ネイビー">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_blue" name="choice" value="●ああ:右手.カラー-ブルー">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_darkgreen" name="choice" value="●ああ:右手.カラー-グリーン">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_yellow" name="choice" value="●ああ:右手.カラー-イエロー">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_gold" name="choice" value="●ああ:右手.カラー-ゴールド">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_orange" name="choice" value="●ああ:右手.カラー-オレンジ">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_red" name="choice" value="●ああ:右手.カラー-レッド">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_darkred" name="choice" value="●ああ:右手.カラー-レッド">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_pink" name="choice" value="●ああ:右手.カラー-ピンク">
+                                <input type="checkbox" class="panel-select-sishu-name-text-color" id="panel_select_sishu_name_text_color_purple" name="choice" value="●ああ:右手.カラー-パープル">
+
+                                <!-- labelをチェックボックスに紐付ける -->
+                                <label for="panel_select_sishu_name_text_color_white" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-white"></div>
+                                    <p class="select-circle-tag">ホワイト</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_silver" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-silver"></div>
+                                    <p class="select-circle-tag">シルバー</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_black" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-black"></div>
+                                    <p class="select-circle-tag">ブラック</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_navy" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-navy"></div>
+                                    <p class="select-circle-tag">ネイビー</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_pnavy" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-pnavy"></div>
+                                    <p class="select-circle-tag">パステル<br>ネイビー</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_blue" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-blue"></div>
+                                    <p class="select-circle-tag">ブルー</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_darkgreen" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-darkgreen"></div>
+                                    <p class="select-circle-tag">ダークグリーン</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_yellow" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-yellow"></div>
+                                    <p class="select-circle-tag">イエロー</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_gold" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-gold"></div>
+                                    <p class="select-circle-tag">ゴールド</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_orange" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-orange"></div>
+                                    <p class="select-circle-tag">オレンジ</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_red" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-red"></div>
+                                    <p class="select-circle-tag">レッド</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_darkred" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-darkred"></div>
+                                    <p class="select-circle-tag">エンジ</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_pink" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-pink"></div>
+                                    <p class="select-circle-tag">ピンク</p>
+                                </label>
+                                <label for="panel_select_sishu_name_text_color_purple" class="control-panel-select-item-sishu-name-color-label-step2">
+                                    <div class="select-circle color-purple"></div>
+                                    <p class="select-circle-tag">パープル</p>
+                                </label>
+                            </div>
+                        </div>
+
                         <div class="control-panel-step" id="control_panel_step_2_sishu_name_text" style="display: none;">
-                            <p>名前+番号</p>
+                            <p>名前+番号) テキスト</p>
                             <div class="control-panel-step-2-select-list-sishu-name-text">
                                 <input type="text" placeholder="例: MIZUNO TARO" id="panel_select_sishu_name_text" autocomplete="off" disabled>
                                 <input type="text" placeholder="例: 10" id="panel_select_sishu_number_text" autocomplete="off" disabled>
@@ -1118,7 +1203,7 @@
                             <div class="sishu-sample">
                                 <div class="control-panel-explain">
                                     <ul class="control-panel-explain-list">
-                                        <li>刺繍の例</li>
+                                        <li>刺繍（チーム名）の例</li>
                                     </ul>
                                 </div>
                                 <img class="sishu-sample-img" src="./img/sishu_sample.png">

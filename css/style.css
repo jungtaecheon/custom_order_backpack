@@ -75,10 +75,11 @@ body {
     background-image:url(../img/bag.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 65%;
+    width: 75%;
     position: relative;
     top: 0px;
     left: 0px;
+    margin-left: -10%;
 }
 
 .logo-svg {
@@ -88,11 +89,11 @@ body {
 }
 
 .bag-back-simulation{
-    margin-right: -25%;
+    margin-right: -26%;
     background-image:url(../img/bag-back.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 40%;
+    width: 45%;
     position: absolute;
     bottom: 25px;
     right: 0px;
@@ -100,7 +101,7 @@ body {
 
 .bag-parts-selector{
     width: 11vw;
-    height: 80%;
+    height: 90%;
     position: absolute;
     top: 70px;
     left: 49vw;
@@ -339,6 +340,13 @@ input[type="checkbox"]{
 }
 
 /* STEP2 */
+.step2-sub-title{
+    text-align: center;
+    background-color: #78bd78;
+    color: #fff;
+    font-size: medium;
+    font-weight: bold;
+}
 .sishu-sample-container{
     display: flex;
     margin-top: -13px;
@@ -450,8 +458,19 @@ input[type="checkbox"]{
     position: relative;
 }
 
-/* 文字カラー */
+/* 文字カラー（チーム名） */
 .control-panel-select-item-sishu-color-label-step2{
+    position: relative;
+    background-color: #dddddd;
+    text-align: center;
+    cursor: pointer;
+    width: 80px;
+    border-radius: 20px;
+    padding-bottom: 10px;
+    margin: 5px;
+}
+/* 文字カラー（名前） */
+.control-panel-select-item-sishu-name-color-label-step2{
     position: relative;
     background-color: #dddddd;
     text-align: center;
@@ -477,6 +496,10 @@ input[type="checkbox"]{
     background-color: #012F3D;
     color: #FFF;
 }
+.control-panel-select-item-sishu-name-color-label-step2:hover{
+    background-color: #012F3D;
+    color: #FFF;
+}
 
 .control-panel-select-item-sishu-side-color-label-step2:hover{
     background-color: #012F3D;
@@ -488,6 +511,12 @@ input[type="checkbox"]{
     display: flex;
     flex-wrap: wrap;
 }
+.control-panel-step-2-select-list-sishu-name-text-color{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .control-panel-step-2-select-list-sishu-text-side-color{
     position: relative;
     display: flex;
@@ -744,15 +773,14 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     }
 
     .bag-simulation{
-        width: 80%;
+        width: 90%;
         -webkit-transition: all 500ms ease;
         -moz-transition: all 500ms ease;
         transition: all 500ms ease;
     }
 
     .bag-back-simulation{
-        margin-right: -24%;
-        width: 40%;
+        margin-right: -22%;
         -webkit-transition: all 500ms ease;
         -moz-transition: all 500ms ease;
         transition: all 500ms ease;
@@ -811,7 +839,7 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     /* STEP1 */
     .bag-parts-selector{
         width: 100vw;
-        height: 80px;
+        height: 120px;
         position: relative;
         display: flex;
         top: 60px;
@@ -857,12 +885,18 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     .control-panel-step-2-select-list-sishu-text-color{
         flex-wrap: nowrap;
     }
-
+    .control-panel-step-2-select-list-sishu-name-text-color{
+        flex-wrap: nowrap;
+    }
     .control-panel-step-2-select-list-sishu-text-side-color{
         flex-wrap: nowrap;
     }
 
     .control-panel-select-item-sishu-color-label-step2{
+        flex-shrink: 0; /* 潰れないように */
+        width: 80px;
+    }
+    .control-panel-select-item-sishu-name-color-label-step2{
         flex-shrink: 0; /* 潰れないように */
         width: 80px;
     }
