@@ -33,8 +33,10 @@ let is_clear_sishu_name_text_type = false;
 let is_clear_sishu_number_text = false;
 // 背番号テキストタイプ
 let is_clear_sishu_number_text_type = false;
-// 文字色（名前+番号）
+// 文字色（名前）
 let is_clear_sishu_name_text_color = false;
+// 文字色（番号）
+let is_clear_sishu_number_text_color = false;
 
 // 初回アクセスか
 let is_first_access_step_2 = true;
@@ -136,6 +138,7 @@ $(function() {
                 $('#control_panel_step_2_sishu_shotai').show();
                 $('#control_panel_step_2_sishu_text_color').show();
                 $('#control_panel_step_2_sishu_name_text_color').show();
+                $('#control_panel_step_2_sishu_number_text_color').show();
                 $('#control_panel_step_2_sishu_text_side_color').show();
                 $('#control_panel_step_2_sishu_team_text_type').show();
                 $('#control_panel_step_2_sishu_team_text').show();
@@ -151,6 +154,7 @@ $(function() {
                 $(".panel-select-sishu-text-side-color").prop("disabled", false);
                 // 名前
                 $(".panel-select-sishu-name-text-color").prop("disabled", false);
+                $(".panel-select-sishu-number-text-color").prop("disabled", false);
                 $(".panel-select-sishu-name-text-type").prop("disabled", false);
                 $(".panel-select-sishu-number-text-type").prop("disabled", false);
 
@@ -193,6 +197,7 @@ $(function() {
                 $('#control_panel_step_2_sishu_shotai').hide();
                 $('#control_panel_step_2_sishu_text_color').hide();
                 $('#control_panel_step_2_sishu_name_text_color').hide();
+                $('#control_panel_step_2_sishu_number_text_color').hide();
                 $('#control_panel_step_2_sishu_text_side_color').hide();
                 $('#control_panel_step_2_sishu_team_text_type').hide();
                 $('#control_panel_step_2_sishu_team_text').hide();
@@ -205,6 +210,7 @@ $(function() {
                 $(".panel-select-sishu-shotai").prop("disabled", true);
                 $(".panel-select-sishu-text-color").prop("disabled", true);
                 $(".panel-select-sishu-name-text-color").prop("disabled", true);
+                $(".panel-select-sishu-number-text-color").prop("disabled", true);
                 $(".panel-select-sishu-text-side-color").prop("disabled", true);
                 $(".panel-select-sishu-team-text-type").prop("disabled", true);
                 $(".panel-select-sishu-name-text-type").prop("disabled", true);
@@ -444,6 +450,25 @@ $(function() {
                 set_disable_next_step_button();
             }
         });
+        // 文字色（番号）
+        $(".control-panel-select-item-sishu-number-color-label-step2").click(function () {
+            is_clear_sishu_number_text_color = true;
+
+            // 一旦選択肢全体を非活性化
+            $(".control-panel-select-item-sishu-number-color-label-step2").css('background-color','#dddddd');
+            $(".control-panel-select-item-sishu-number-color-label-step2").css('color','#000');
+
+            // 選択されたものだけを活性化
+            $(this).css('background-color','#012F3D');
+            $(this).css('color','#FFF');
+
+            // 完了している場合は、次へボタン活性化
+            if(is_clear_sishu_step()){
+                clear_flug_arr_of_step[1] = true;
+                // 次のステップボタン（活性）
+                set_active_next_step_button();
+            }
+        });
         // 番号-テキスト
         $("#panel_select_sishu_number_text").on('input', function () {
             // 数字のみ（空文字NG）
@@ -576,13 +601,13 @@ $(function() {
                 }else{
                     // 番号がない場合はオプションも無効にする
                     $(".panel-select-sishu-number-text-type").prop("disabled", true);
+                    $(".panel-select-sishu-number-text-color").prop("disabled", true);
                 }
 
                 if( name != '' ){
                     $('#panel_select_sishu_name_text_hidden').val( '●【あああああああああああ】:'+ name );
                 }else{
                     $('#panel_select_sishu_name_text_hidden').prop('disabled', true);
-                    // 名前+番号共通オプションを無効にする
                     $(".panel-select-sishu-name-text-color").prop("disabled", true);
                 }
 
@@ -998,17 +1023,11 @@ $(function() {
     function is_clear_sishu_step(){
 
         if( !(is_clear_sishu_shotai && is_clear_sishu_text_color && is_clear_sishu_text_side_color && is_clear_sishu_team_text && is_clear_sishu_team_text_type) ){
-            if ( !(is_clear_sishu_name_text_color && ( (is_clear_sishu_name_text && is_clear_sishu_name_text_type) || (is_clear_sishu_number_text && is_clear_sishu_number_text_type) )) ){
-                // チーム名も名前も不備がある場合
-                // 名前の不備: 「名前文字色=>必須」 かつ 「名前or番号のテキスト=>必須」
+            if ( !( (is_clear_sishu_name_text && is_clear_sishu_name_text_type && is_clear_sishu_name_text_color) || (is_clear_sishu_number_text && is_clear_sishu_number_text_type && is_clear_sishu_number_text_color) ) ){
+                // チーム名 or 名前 に不備がある場合
                 return false;
-            }else{
-                // チーム名は不備があるが、名前がすべてクリア出来た場合
-                return true;
             }
         }
-
-        // チーム名に不備がない場合
         return true;
     }
 
