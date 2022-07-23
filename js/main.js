@@ -573,7 +573,7 @@ $(function() {
 
                 ///// チーム名
                 if( $('#panel_select_sishu_team_text').val().length > 0 ){
-                    $('#panel_select_sishu_team_text_hidden').val( '●【手首ベルト部の刺繍.右手-内容】:'+ $('#panel_select_sishu_team_text').val() );
+                    $('#panel_select_sishu_team_text_hidden').val( '●【直接刺繍（二重刺繍）.チーム名-テキスト】:'+ $('#panel_select_sishu_team_text').val() );
                 }else{
                     $('#panel_select_sishu_team_text_hidden').prop('disabled', true);
                     // チーム名
@@ -605,7 +605,7 @@ $(function() {
                 }
 
                 if( name != '' ){
-                    $('#panel_select_sishu_name_text_hidden').val( '●【あああああああああああ】:'+ name );
+                    $('#panel_select_sishu_name_text_hidden').val( '●【直接刺繍（二重刺繍）.名前+番号-テキスト】:'+ name );
                 }else{
                     $('#panel_select_sishu_name_text_hidden').prop('disabled', true);
                     $(".panel-select-sishu-name-text-color").prop("disabled", true);
