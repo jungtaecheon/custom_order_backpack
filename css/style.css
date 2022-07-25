@@ -922,6 +922,10 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
         flex-shrink: 0; /* 潰れないように */
         width: 80px;
     }
+    .control-panel-select-item-sishu-number-color-label-step2{
+        flex-shrink: 0; /* 潰れないように */
+        width: 80px;
+    }
     .control-panel-select-item-sishu-side-color-label-step2{
         flex-shrink: 0; /* 潰れないように */
         width: 80px;
