@@ -13,8 +13,6 @@ let clear_flug_arr_of_step = [false, true, false];
 let clear_flug_arr_of_color_step = [false, false, false, false, false, false, false];
 
 // step2（刺繍）の選択項目管理
-// 書体、文字色、縁色、
-let clear_flug_arr_of_step_2 = [false, false, false];
 // 書体
 let is_clear_sishu_shotai = false;
 // 文字色（チーム名）
