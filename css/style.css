@@ -450,6 +450,7 @@ input[type="checkbox"]{
 
 .control-panel-select-item-sishu-shotai-label-step2:hover{
     background-color: #012F3D;
+    color: #FFF;
 }
 
 .panel-sishu-shotai-img{
@@ -556,30 +557,6 @@ input[type="checkbox"]{
 .panel-sishu-text-type-img-tag-none{
     font-size: large;
     padding: 20px 0;
-}
-
-/* チーム名 */
-.control-panel-step-2-select-list-sishu-team-text-type{
-    display: flex;
-    flex-wrap : wrap;
-    width: 100%;
-}
-
-.control-panel-select-item-sishu-team-text-type-label-step2{
-    flex-shrink: 0; /* 潰れないように */
-    margin: 10px;
-    text-align: center;
-    width: 35%;
-    position: relative;
-    background-color: #dddddd;
-    padding: 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    cursor: pointer;
-}
-.control-panel-select-item-sishu-team-text-type-label-step2:hover{
-    background-color: #012F3D;
-    color: #FFF;
 }
 
 #panel_select_sishu_team_text{
@@ -929,10 +906,6 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     .control-panel-select-item-sishu-side-color-label-step2{
         flex-shrink: 0; /* 潰れないように */
         width: 80px;
-    }
-    /* チーム名 */
-    .control-panel-step-2-select-list-sishu-team-text-type{
-        flex-wrap : nowrap;
     }
     /* 名前 */
     .control-panel-step-2-select-list-sishu-name-text-type{
