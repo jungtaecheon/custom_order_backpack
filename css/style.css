@@ -74,7 +74,7 @@ body {
     width: 25%;
     height: 9%;
     text-align: center;
-    font-size: 2.2vw;
+    font-size: 2.5vw;
     overflow-x: scroll;
     overflow-y: none;
     font-weight: bold;
@@ -802,7 +802,7 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     }
 
     .sishu-text-simulate{
-        font-size: 4.5vw;
+        font-size: 5.5vw;
     }
 
     .sishu-text-name-simulate{
