@@ -324,6 +324,9 @@ $(function() {
                 is_clear_sishu_team_text = false;
             }
 
+            // 全角スペースを半角スペースに置換
+            $(this).val( $(this).val().replace(/　/g," ") );
+
             $("#sishu_text_simulate").text($(this).val());
 
             // 完了している場合は、次へボタン活性化
@@ -419,6 +422,9 @@ $(function() {
             } else {
                 is_clear_sishu_name_text = false;
             }
+
+            // 全角スペースを半角スペースに置換
+            $(this).val( $(this).val().replace(/　/g," ") );
 
             $("#sishu_text_name_simulate").text($(this).val());
 
