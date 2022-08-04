@@ -227,8 +227,11 @@ $(function() {
                 $("#panel_select_sishu_team_text").val('');
             }else{
                 is_clear_sishu_shotai = true;
+
                 // テキストエリアを活性化
-                $("#panel_select_sishu_team_text").prop("disabled", false);
+                if(is_clear_sishu_text_color && is_clear_sishu_text_side_color){
+                    $("#panel_select_sishu_team_text").prop("disabled", false);
+                }
             }
 
             // 一旦選択肢全体を非活性化
@@ -250,6 +253,11 @@ $(function() {
         $(".control-panel-select-item-sishu-color-label-step2").click(function () {
             is_clear_sishu_text_color = true;
 
+            // テキストエリアを活性化
+            if(is_clear_sishu_shotai && is_clear_sishu_text_side_color){
+                $("#panel_select_sishu_team_text").prop("disabled", false);
+            }
+
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-sishu-color-label-step2").css('background-color','#dddddd');
             $(".control-panel-select-item-sishu-color-label-step2").css('color','#000');
@@ -268,6 +276,11 @@ $(function() {
         // 縁色
         $(".control-panel-select-item-sishu-side-color-label-step2").click(function () {
             is_clear_sishu_text_side_color = true;
+
+            // テキストエリアを活性化
+            if(is_clear_sishu_shotai && is_clear_sishu_text_color){
+                $("#panel_select_sishu_team_text").prop("disabled", false);
+            }
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-sishu-side-color-label-step2").css('background-color','#dddddd');
@@ -319,8 +332,11 @@ $(function() {
                 $("#panel_select_sishu_name_text").val('');
             }else{
                 is_clear_sishu_name_text_type = true;
+
                 // テキストエリアを活性化
-                $("#panel_select_sishu_name_text").prop("disabled", false);
+                if(is_clear_sishu_name_text_color){
+                    $("#panel_select_sishu_name_text").prop("disabled", false);
+                }
             }
 
             // 一旦選択肢全体を非活性化
@@ -345,6 +361,11 @@ $(function() {
         // 文字色（名前）
         $(".control-panel-select-item-sishu-name-color-label-step2").click(function () {
             is_clear_sishu_name_text_color = true;
+
+            // テキストエリアを活性化
+            if(is_clear_sishu_name_text_type){
+                $("#panel_select_sishu_name_text").prop("disabled", false);
+            }
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-sishu-name-color-label-step2").css('background-color','#dddddd');
@@ -396,8 +417,11 @@ $(function() {
                 $("#panel_select_sishu_number_text").val('');
             }else{
                 is_clear_sishu_number_text_type = true;
+
                 // テキストエリアを活性化
-                $("#panel_select_sishu_number_text").prop("disabled", false);
+                if(is_clear_sishu_number_text_color){
+                    $("#panel_select_sishu_number_text").prop("disabled", false);
+                }
             }
 
             // 一旦選択肢全体を非活性化
@@ -422,6 +446,11 @@ $(function() {
         // 文字色（番号）
         $(".control-panel-select-item-sishu-number-color-label-step2").click(function () {
             is_clear_sishu_number_text_color = true;
+
+            // テキストエリアを活性化
+            if(is_clear_sishu_number_text_type){
+                $("#panel_select_sishu_number_text").prop("disabled", false);
+            }
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-sishu-number-color-label-step2").css('background-color','#dddddd');
