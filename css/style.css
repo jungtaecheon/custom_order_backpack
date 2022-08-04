@@ -3,6 +3,12 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
 }
 
 .warning-font{
@@ -67,18 +73,18 @@ body {
 }
 
 .sishu-text-simulate{
-    color: #fff;
+    color: black;
     position: absolute;
     left: 54%;
     top: 29%;
     width: 25%;
-    height: 9%;
+    height: 10%;
     text-align: center;
     font-size: 2.5vw;
     overflow-x: scroll;
     overflow-y: none;
     font-weight: bold;
-    -webkit-text-stroke: 1px #000;
+    -webkit-text-stroke: 1px rgb(255, 242, 0);
     transform:rotate(-5deg);
     white-space: nowrap;
 }
