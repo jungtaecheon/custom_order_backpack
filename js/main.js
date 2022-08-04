@@ -253,6 +253,15 @@ $(function() {
         $(".control-panel-select-item-sishu-color-label-step2").click(function () {
             is_clear_sishu_text_color = true;
 
+            // labelから選択されたカラーを抽出
+            let selected_color = $(this).attr('for').replace('panel_select_sishu_text_color_','');
+            // color-only- で始まるclassすべて削除
+            $("#sishu_text_simulate").removeClass (function (index, css) {
+                return (css.match (/\bcolor-only-\S+/g) || []).join(' ');
+            });
+            // 選択した色をシミュレーションにセット
+            $("#sishu_text_simulate").addClass('color-only-'+selected_color);
+
             // テキストエリアを活性化
             if(is_clear_sishu_shotai && is_clear_sishu_text_side_color){
                 $("#panel_select_sishu_team_text").prop("disabled", false);
@@ -276,6 +285,15 @@ $(function() {
         // 縁色
         $(".control-panel-select-item-sishu-side-color-label-step2").click(function () {
             is_clear_sishu_text_side_color = true;
+
+            // labelから選択されたカラーを抽出
+            let selected_color = $(this).attr('for').replace('panel_select_sishu_text_side_color_','');
+            // color-only- で始まるclassすべて削除
+            $("#sishu_text_simulate").removeClass (function (index, css) {
+                return (css.match (/\bcolor-line-\S+/g) || []).join(' ');
+            });
+            // 選択した色をシミュレーションにセット
+            $("#sishu_text_simulate").addClass('color-line-'+selected_color);
 
             // テキストエリアを活性化
             if(is_clear_sishu_shotai && is_clear_sishu_text_color){
@@ -305,6 +323,8 @@ $(function() {
             } else {
                 is_clear_sishu_team_text = false;
             }
+
+            $("#sishu_text_simulate").text($(this).val());
 
             // 完了している場合は、次へボタン活性化
             if(is_clear_sishu_step()){
@@ -362,6 +382,15 @@ $(function() {
         $(".control-panel-select-item-sishu-name-color-label-step2").click(function () {
             is_clear_sishu_name_text_color = true;
 
+            // labelから選択されたカラーを抽出
+            let selected_color = $(this).attr('for').replace('panel_select_sishu_name_text_color_','');
+            // color-only- で始まるclassすべて削除
+            $("#sishu_text_name_simulate").removeClass (function (index, css) {
+                return (css.match (/\bcolor-only-\S+/g) || []).join(' ');
+            });
+            // 選択した色をシミュレーションにセット
+            $("#sishu_text_name_simulate").addClass('color-only-'+selected_color);
+
             // テキストエリアを活性化
             if(is_clear_sishu_name_text_type){
                 $("#panel_select_sishu_name_text").prop("disabled", false);
@@ -390,6 +419,8 @@ $(function() {
             } else {
                 is_clear_sishu_name_text = false;
             }
+
+            $("#sishu_text_name_simulate").text($(this).val());
 
             // 完了している場合は、次へボタン活性化
             if(is_clear_sishu_step()){
@@ -447,6 +478,15 @@ $(function() {
         $(".control-panel-select-item-sishu-number-color-label-step2").click(function () {
             is_clear_sishu_number_text_color = true;
 
+            // labelから選択されたカラーを抽出
+            let selected_color = $(this).attr('for').replace('panel_select_sishu_number_text_color_','');
+            // color-only- で始まるclassすべて削除
+            $("#sishu_text_number_simulate").removeClass (function (index, css) {
+                return (css.match (/\bcolor-only-\S+/g) || []).join(' ');
+            });
+            // 選択した色をシミュレーションにセット
+            $("#sishu_text_number_simulate").addClass('color-only-'+selected_color);
+
             // テキストエリアを活性化
             if(is_clear_sishu_number_text_type){
                 $("#panel_select_sishu_number_text").prop("disabled", false);
@@ -487,6 +527,8 @@ $(function() {
             if ($(this).val().length > 2 ) {
                 $(this).val( $(this).val().slice(0, 2) );
             }
+
+            $("#sishu_text_number_simulate").text($(this).val());
 
             // 完了している場合は、次へボタン活性化
             if(is_clear_sishu_step()){
