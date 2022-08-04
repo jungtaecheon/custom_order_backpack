@@ -250,7 +250,12 @@ $(function() {
                 clear_flug_arr_of_step[1] = true;
                 // 次のステップボタン（活性）
                 set_active_next_step_button();
+            } else {
+                clear_flug_arr_of_step[1] = false;
+                // 次のステップボタン（非活性化）
+                set_disable_next_step_button();
             }
+
         });
         // 文字色
         $(".control-panel-select-item-sishu-color-label-step2").click(function () {
