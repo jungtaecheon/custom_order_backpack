@@ -541,7 +541,12 @@ $(function() {
                 // テキストは最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
 
                 ///// チーム名
-                if( !$('#panel_select_sishu_team_text').prop('disabled') && $('#panel_select_sishu_team_text').val().length > 0 ){
+                ///// 最後に、テキスト、カラーが揃っている場合のみ送信すると判断する
+                if( !$('#panel_select_sishu_team_text').prop('disabled') &&
+                    is_clear_sishu_team_text &&
+                    is_clear_sishu_text_color &&
+                    is_clear_sishu_text_side_color
+                ){
                     $('#panel_select_sishu_team_text_hidden').val( '●【直接刺繍（二重刺繍）.チーム名-テキスト】:'+ $('#panel_select_sishu_team_text').val() );
                 }else{
                     $('#panel_select_sishu_team_text_hidden').prop('disabled', true);
@@ -552,16 +557,23 @@ $(function() {
                 }
 
                 ///// 名前+(スペース)+番号
+                ///// 最後に、テキスト、カラーが揃っている場合のみ送信すると判断する
                 let name = '';
 
-                if( !$('#panel_select_sishu_name_text').prop('disabled') && $('#panel_select_sishu_name_text').val().length > 0 ){
+                if( !$('#panel_select_sishu_name_text').prop('disabled') &&
+                    is_clear_sishu_name_text &&
+                    is_clear_sishu_name_text_color
+                ){
                     name += $('#panel_select_sishu_name_text').val();
                 }else{
                     // 名前がない場合はオプションも無効にする
                     $(".panel-select-sishu-name-text-type").prop("disabled", true);
                 }
 
-                if( !$('#panel_select_sishu_number_text').prop('disabled') && $('#panel_select_sishu_number_text').val().length > 0 ){
+                if( !$('#panel_select_sishu_number_text').prop('disabled') &&
+                    is_clear_sishu_number_text &&
+                    is_clear_sishu_number_text_color
+                ){
                     if( name != '' ){
                         name += ' ';
                     }
