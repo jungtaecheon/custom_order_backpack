@@ -1094,7 +1094,7 @@ $(function() {
 
         if( !(is_clear_sishu_shotai && is_clear_sishu_text_color && is_clear_sishu_text_side_color && is_clear_sishu_team_text) ){
             if ( !( (is_clear_sishu_name_text && is_clear_sishu_name_text_type && is_clear_sishu_name_text_color) || (is_clear_sishu_number_text && is_clear_sishu_number_text_type && is_clear_sishu_number_text_color) ) ){
-                // チーム名 or 名前 に不備がある場合
+                // チーム名 and 名前 に不備がある場合
                 return false;
             }
         }
