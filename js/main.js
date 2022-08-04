@@ -1074,31 +1074,38 @@ $(function() {
     }
 
     /**
-     * 刺繍ステップが完了したかを判定する
+     * 刺繍ステップが完了したかを判定する<br>
+     * 以下のいずれかがすべてtrueの場合、trueを返す。
      *
      * チーム名書体 is_clear_sishu_shotai
      * チーム名文字色（チーム名） is_clear_sishu_text_color
      * チーム名縁色 is_clear_sishu_text_side_color
      * チーム名テキスト is_clear_sishu_team_text
      *
-     * or
-     *
-     * 名前文字色（名前+番号） is_clear_sishu_name_text_color
+     * 名前文字色 is_clear_sishu_name_text_color
      * 名前テキスト is_clear_sishu_name_text
      * 名前テキストタイプ is_clear_sishu_name_text_type
+     *
+     * 背番号文字色 is_clear_sishu_number_text_color
      * 背番号テキスト is_clear_sishu_number_text
      * 背番号テキストタイプ is_clear_sishu_number_text_type
      *
      */
     function is_clear_sishu_step(){
-
-        if( !(is_clear_sishu_shotai && is_clear_sishu_text_color && is_clear_sishu_text_side_color && is_clear_sishu_team_text) ){
-            if ( !( (is_clear_sishu_name_text && is_clear_sishu_name_text_type && is_clear_sishu_name_text_color) || (is_clear_sishu_number_text && is_clear_sishu_number_text_type && is_clear_sishu_number_text_color) ) ){
-                // チーム名 and 名前 に不備がある場合
-                return false;
-            }
+        // チーム名
+        if(is_clear_sishu_shotai && is_clear_sishu_text_color && is_clear_sishu_text_side_color && is_clear_sishu_team_text){
+            return true;
         }
-        return true;
+        // 名前
+        if(is_clear_sishu_name_text && is_clear_sishu_name_text_type && is_clear_sishu_name_text_color){
+            return true;
+        }
+        // 背番号
+        if(is_clear_sishu_number_text && is_clear_sishu_number_text_type && is_clear_sishu_number_text_color){
+            return true;
+        }
+
+        return false;
     }
 
 });
