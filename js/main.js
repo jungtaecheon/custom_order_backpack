@@ -864,7 +864,7 @@ $(function() {
             'padding-left':'9px',
             'padding-right':'9px',
         });
-        $("#next_step_button").hover(function() {
+        $("#back_step_button").hover(function() {
             // カーソルが当たった時の処理
             $(this).css("background-color", "#f56500");
         }, function() {
@@ -911,7 +911,7 @@ $(function() {
             'padding-left':'10px',
             'padding-right':'10px',
         });
-        $("#next_step_button").hover(function() {
+        $("#back_step_button").hover(function() {
             // カーソルが当たった時の処理
             $(this).css("background-color", "#d8d8d8");
         }, function() {
