@@ -3,6 +3,12 @@
 body {
     margin: 0;
     padding: 0;
+    font-family: "Helvetica Neue",
+    Arial,
+    "Hiragino Kaku Gothic ProN",
+    "Hiragino Sans",
+    Meiryo,
+    sans-serif;
 }
 
 .warning-font{
@@ -64,6 +70,39 @@ body {
     width: 60vw;
     height: auto;
     background: #fff;
+}
+
+.sishu-text-simulate{
+    color: black;
+    position: absolute;
+    left: 54%;
+    top: 29%;
+    width: 25%;
+    height: 10%;
+    text-align: center;
+    font-size: 3vw;
+    overflow-x: scroll;
+    overflow-y: none;
+    font-weight: bold;
+    -webkit-text-stroke: 1px rgb(255, 242, 0);
+    transform:rotate(-5deg);
+    white-space: nowrap;
+}
+
+.sishu-text-name-simulate{
+    color: black;
+    position: absolute;
+    left: 55%;
+    top: 41%;
+    width: 25%;
+    height: 6%;
+    text-align: center;
+    font-size: 1.5vw;
+    overflow-x: scroll;
+    overflow-y: none;
+    font-weight: bold;
+    transform:rotate(-5deg);
+    white-space: nowrap;
 }
 
 .bag-parts, .bag-back-parts{
@@ -450,6 +489,7 @@ input[type="checkbox"]{
 
 .control-panel-select-item-sishu-shotai-label-step2:hover{
     background-color: #012F3D;
+    color: #FFF;
 }
 
 .panel-sishu-shotai-img{
@@ -556,30 +596,6 @@ input[type="checkbox"]{
 .panel-sishu-text-type-img-tag-none{
     font-size: large;
     padding: 20px 0;
-}
-
-/* チーム名 */
-.control-panel-step-2-select-list-sishu-team-text-type{
-    display: flex;
-    flex-wrap : wrap;
-    width: 100%;
-}
-
-.control-panel-select-item-sishu-team-text-type-label-step2{
-    flex-shrink: 0; /* 潰れないように */
-    margin: 10px;
-    text-align: center;
-    width: 35%;
-    position: relative;
-    background-color: #dddddd;
-    padding: 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    cursor: pointer;
-}
-.control-panel-select-item-sishu-team-text-type-label-step2:hover{
-    background-color: #012F3D;
-    color: #FFF;
 }
 
 #panel_select_sishu_team_text{
@@ -791,6 +807,14 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
         transition: all 500ms ease;
     }
 
+    .sishu-text-simulate{
+        font-size: 6vw;
+    }
+
+    .sishu-text-name-simulate{
+        font-size: 3vw;
+    }
+
     .bag-simulation{
         width: 90%;
         -webkit-transition: all 500ms ease;
@@ -930,10 +954,6 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
         flex-shrink: 0; /* 潰れないように */
         width: 80px;
     }
-    /* チーム名 */
-    .control-panel-step-2-select-list-sishu-team-text-type{
-        flex-wrap : nowrap;
-    }
     /* 名前 */
     .control-panel-step-2-select-list-sishu-name-text-type{
         flex-wrap : nowrap;
@@ -964,7 +984,7 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
 .color-orange{background-color:#e94f02}
 .color-pink{background-color:#f873ad}
 .color-purple{background-color:#6e3796}
-.color-skyblue{background-color: #2f9dcf;}
+.color-skyblue{background-color: #2f9dcf}
 
 .parts-color-white{fill: #FFF;}
 .parts-color-black{fill:#222}
@@ -987,3 +1007,47 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
 .parts-color-pink{fill:#f873ad}
 .parts-color-purple{fill:#6e3796}
 .parts-color-skyblue{fill: #2f9dcf;}
+
+.color-only-white{color: #FFF}
+.color-only-black{color: #222}
+.color-only-red{color: #af1616}
+.color-only-mred{color: #af1616}
+.color-only-darkred{color: #610d0d}
+.color-only-navy{color: #292f42}
+.color-only-mnavy{color: #292f42}
+.color-only-pnavy{color: #4158a4}
+.color-only-darkpnavy{color: #283667}
+.color-only-blue{color: #4579c1}
+.color-only-silver{color: #EEE}
+.color-only-gold{color: #ccb35f}
+.color-only-lime{color: #b7f750}
+.color-only-gray{color: #807e7e}
+.color-only-green{color: #018001}
+.color-only-darkgreen{color: #0a3f29}
+.color-only-yellow{color: #faea3c}
+.color-only-orange{color: #e94f02}
+.color-only-pink{color: #f873ad}
+.color-only-purple{color: #6e3796}
+.color-only-skyblue{color: #2f9dcf}
+
+.color-line-white{-webkit-text-stroke: 1px #FFF;}
+.color-line-black{-webkit-text-stroke: 1px #222}
+.color-line-red{-webkit-text-stroke: 1px #af1616}
+.color-line-mred{-webkit-text-stroke: 1px #af1616}
+.color-line-darkred{-webkit-text-stroke: 1px #610d0d}
+.color-line-navy{-webkit-text-stroke: 1px #292f42}
+.color-line-mnavy{-webkit-text-stroke: 1px #292f42}
+.color-line-pnavy{-webkit-text-stroke: 1px #4158a4}
+.color-line-darkpnavy{-webkit-text-stroke: 1px #283667}
+.color-line-blue{-webkit-text-stroke: 1px #4579c1}
+.color-line-silver{-webkit-text-stroke: 1px #EEE}
+.color-line-gold{-webkit-text-stroke: 1px #ccb35f}
+.color-line-lime{-webkit-text-stroke: 1px #b7f750}
+.color-line-gray{-webkit-text-stroke: 1px #807e7e}
+.color-line-green{-webkit-text-stroke: 1px #018001}
+.color-line-darkgreen{-webkit-text-stroke: 1px #0a3f29}
+.color-line-yellow{-webkit-text-stroke: 1px #faea3c}
+.color-line-orange{-webkit-text-stroke: 1px #e94f02}
+.color-line-pink{-webkit-text-stroke: 1px #f873ad}
+.color-line-purple{-webkit-text-stroke: 1px #6e3796}
+.color-line-skyblue{-webkit-text-stroke: 1px #2f9dcf}

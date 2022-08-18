@@ -21,8 +21,6 @@ let is_clear_sishu_text_color = false;
 let is_clear_sishu_text_side_color = false;
 // チーム名テキスト
 let is_clear_sishu_team_text = false;
-// チーム名テキストタイプ
-let is_clear_sishu_team_text_type = false;
 // 名前テキスト
 let is_clear_sishu_name_text = false;
 // 名前テキストタイプ
@@ -138,7 +136,6 @@ $(function() {
                 $('#control_panel_step_2_sishu_name_text_color').show();
                 $('#control_panel_step_2_sishu_number_text_color').show();
                 $('#control_panel_step_2_sishu_text_side_color').show();
-                $('#control_panel_step_2_sishu_team_text_type').show();
                 $('#control_panel_step_2_sishu_team_text').show();
                 $('#control_panel_step_2_sishu_name_text_type').show();
                 $('#control_panel_step_2_sishu_name_text').show();
@@ -147,7 +144,6 @@ $(function() {
 
                 // チーム名
                 $(".panel-select-sishu-shotai").prop("disabled", false);
-                $(".panel-select-sishu-team-text-type").prop("disabled", false);
                 $(".panel-select-sishu-text-color").prop("disabled", false);
                 $(".panel-select-sishu-text-side-color").prop("disabled", false);
                 // 名前
@@ -156,7 +152,7 @@ $(function() {
                 $(".panel-select-sishu-name-text-type").prop("disabled", false);
                 $(".panel-select-sishu-number-text-type").prop("disabled", false);
 
-                if (!is_clear_sishu_team_text_type) {
+                if (!is_clear_sishu_shotai) {
                     // タイプが選択される前（disabled=true）は、text も disabled を true （無効）にする
                     $("#panel_select_sishu_team_text").prop("disabled", true);
                 }else{
@@ -197,7 +193,6 @@ $(function() {
                 $('#control_panel_step_2_sishu_name_text_color').hide();
                 $('#control_panel_step_2_sishu_number_text_color').hide();
                 $('#control_panel_step_2_sishu_text_side_color').hide();
-                $('#control_panel_step_2_sishu_team_text_type').hide();
                 $('#control_panel_step_2_sishu_team_text').hide();
                 $('#control_panel_step_2_sishu_name_text_type').hide();
                 $('#control_panel_step_2_sishu_name_text').hide();
@@ -210,7 +205,6 @@ $(function() {
                 $(".panel-select-sishu-name-text-color").prop("disabled", true);
                 $(".panel-select-sishu-number-text-color").prop("disabled", true);
                 $(".panel-select-sishu-text-side-color").prop("disabled", true);
-                $(".panel-select-sishu-team-text-type").prop("disabled", true);
                 $(".panel-select-sishu-name-text-type").prop("disabled", true);
                 $(".panel-select-sishu-number-text-type").prop("disabled", true);
                 $("#panel_select_sishu_team_text").prop("disabled", true);
@@ -218,9 +212,30 @@ $(function() {
                 $("#panel_select_sishu_number_text").prop("disabled", true);
             }
         });
-        // 刺繍タイプ
+        // 刺繍書体
         $(".control-panel-select-item-sishu-shotai-label-step2").click(function () {
-            is_clear_sishu_shotai = true;
+            if($(this).attr('for') == 'panel_select_sishu_shotai_0'){
+                // なしを選択した場合
+                is_clear_sishu_shotai = false;
+                // テキストタイプを無効化
+                $(".panel-select-sishu-shotai").prop("disabled", true);
+
+                // 合わせてテキストも削除するためテキストのclearフラグもfalseにする
+                is_clear_sishu_team_text = false;
+                // テキストエリアを無効化
+                $("#panel_select_sishu_team_text").prop("disabled", true);
+                $("#panel_select_sishu_team_text").val('');
+
+                // シミュレーターの刺繍テキストを削除
+                $("#sishu_text_simulate").text('');
+            }else{
+                is_clear_sishu_shotai = true;
+
+                // テキストエリアを活性化
+                if(is_clear_sishu_text_color && is_clear_sishu_text_side_color){
+                    $("#panel_select_sishu_team_text").prop("disabled", false);
+                }
+            }
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-sishu-shotai-label-step2").css('background-color','#dddddd');
@@ -235,11 +250,30 @@ $(function() {
                 clear_flug_arr_of_step[1] = true;
                 // 次のステップボタン（活性）
                 set_active_next_step_button();
+            } else {
+                clear_flug_arr_of_step[1] = false;
+                // 次のステップボタン（非活性化）
+                set_disable_next_step_button();
             }
+
         });
         // 文字色
         $(".control-panel-select-item-sishu-color-label-step2").click(function () {
             is_clear_sishu_text_color = true;
+
+            // labelから選択されたカラーを抽出
+            let selected_color = $(this).attr('for').replace('panel_select_sishu_text_color_','');
+            // color-only- で始まるclassすべて削除
+            $("#sishu_text_simulate").removeClass (function (index, css) {
+                return (css.match (/\bcolor-only-\S+/g) || []).join(' ');
+            });
+            // 選択した色をシミュレーションにセット
+            $("#sishu_text_simulate").addClass('color-only-'+selected_color);
+
+            // テキストエリアを活性化
+            if(is_clear_sishu_shotai && is_clear_sishu_text_side_color){
+                $("#panel_select_sishu_team_text").prop("disabled", false);
+            }
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-sishu-color-label-step2").css('background-color','#dddddd');
@@ -260,6 +294,20 @@ $(function() {
         $(".control-panel-select-item-sishu-side-color-label-step2").click(function () {
             is_clear_sishu_text_side_color = true;
 
+            // labelから選択されたカラーを抽出
+            let selected_color = $(this).attr('for').replace('panel_select_sishu_text_side_color_','');
+            // color-only- で始まるclassすべて削除
+            $("#sishu_text_simulate").removeClass (function (index, css) {
+                return (css.match (/\bcolor-line-\S+/g) || []).join(' ');
+            });
+            // 選択した色をシミュレーションにセット
+            $("#sishu_text_simulate").addClass('color-line-'+selected_color);
+
+            // テキストエリアを活性化
+            if(is_clear_sishu_shotai && is_clear_sishu_text_color){
+                $("#panel_select_sishu_team_text").prop("disabled", false);
+            }
+
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-sishu-side-color-label-step2").css('background-color','#dddddd');
             $(".control-panel-select-item-sishu-side-color-label-step2").css('color','#000');
@@ -275,44 +323,6 @@ $(function() {
                 set_active_next_step_button();
             }
         });
-        // チーム名-刺繍タイプ
-        $(".control-panel-select-item-sishu-team-text-type-label-step2").click(function () {
-            if($(this).attr('for') == 'panel_select_sishu_team_text_type_3'){
-                // なしを選択した場合
-                is_clear_sishu_team_text_type = false;
-                // テキストタイプを無効化
-                $(".panel-select-sishu-team-text-type").prop("disabled", true);
-
-                // 合わせてテキストも削除するためテキストのclearフラグもfalseにする
-                is_clear_sishu_team_text = false;
-                // テキストエリアを無効化
-                $("#panel_select_sishu_team_text").prop("disabled", true);
-                $("#panel_select_sishu_team_text").val('');
-            }else{
-                is_clear_sishu_team_text_type = true;
-                // テキストエリアを活性化
-                $("#panel_select_sishu_team_text").prop("disabled", false);
-            }
-
-            // 一旦選択肢全体を非活性化
-            $(".control-panel-select-item-sishu-team-text-type-label-step2").css('background-color','#dddddd');
-            $(".control-panel-select-item-sishu-team-text-type-label-step2").css('color','#000');
-
-            // 選択されたものだけを活性化
-            $(this).css('background-color','#012F3D');
-            $(this).css('color','#FFF');
-
-            // 完了している場合は、次へボタン活性化
-            if(is_clear_sishu_step()){
-                clear_flug_arr_of_step[1] = true;
-                // 次のステップボタン（活性）
-                set_active_next_step_button();
-            } else {
-                clear_flug_arr_of_step[1] = false;
-                // 次のステップボタン（非活性化）
-                set_disable_next_step_button();
-            }
-        });
         // チーム名-テキスト
         $("#panel_select_sishu_team_text").on('input', function () {
             // 文字数が1文字以上の場合のみ、clearフラグをtrueにする
@@ -321,6 +331,11 @@ $(function() {
             } else {
                 is_clear_sishu_team_text = false;
             }
+
+            // 全角スペースを半角スペースに置換
+            $(this).val( $(this).val().replace(/　/g," ") );
+
+            $("#sishu_text_simulate").text($(this).val());
 
             // 完了している場合は、次へボタン活性化
             if(is_clear_sishu_step()){
@@ -346,10 +361,16 @@ $(function() {
                 // テキストエリアを無効化
                 $("#panel_select_sishu_name_text").prop("disabled", true);
                 $("#panel_select_sishu_name_text").val('');
+
+                // シミュレーターの刺繍テキストを削除
+                $("#sishu_text_name_simulate").text('');
             }else{
                 is_clear_sishu_name_text_type = true;
+
                 // テキストエリアを活性化
-                $("#panel_select_sishu_name_text").prop("disabled", false);
+                if(is_clear_sishu_name_text_color){
+                    $("#panel_select_sishu_name_text").prop("disabled", false);
+                }
             }
 
             // 一旦選択肢全体を非活性化
@@ -375,6 +396,20 @@ $(function() {
         $(".control-panel-select-item-sishu-name-color-label-step2").click(function () {
             is_clear_sishu_name_text_color = true;
 
+            // labelから選択されたカラーを抽出
+            let selected_color = $(this).attr('for').replace('panel_select_sishu_name_text_color_','');
+            // color-only- で始まるclassすべて削除
+            $("#sishu_text_name_simulate").removeClass (function (index, css) {
+                return (css.match (/\bcolor-only-\S+/g) || []).join(' ');
+            });
+            // 選択した色をシミュレーションにセット
+            $("#sishu_text_name_simulate").addClass('color-only-'+selected_color);
+
+            // テキストエリアを活性化
+            if(is_clear_sishu_name_text_type){
+                $("#panel_select_sishu_name_text").prop("disabled", false);
+            }
+
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-sishu-name-color-label-step2").css('background-color','#dddddd');
             $(".control-panel-select-item-sishu-name-color-label-step2").css('color','#000');
@@ -398,6 +433,11 @@ $(function() {
             } else {
                 is_clear_sishu_name_text = false;
             }
+
+            // 全角スペースを半角スペースに置換
+            $(this).val( $(this).val().replace(/　/g," ") );
+
+            $("#sishu_text_name_simulate").text($(this).val());
 
             // 完了している場合は、次へボタン活性化
             if(is_clear_sishu_step()){
@@ -423,10 +463,16 @@ $(function() {
                 // テキストエリアを無効化
                 $("#panel_select_sishu_number_text").prop("disabled", true);
                 $("#panel_select_sishu_number_text").val('');
+
+                // シミュレーターの刺繍テキストを削除
+                $("#sishu_text_number_simulate").text('');
             }else{
                 is_clear_sishu_number_text_type = true;
+
                 // テキストエリアを活性化
-                $("#panel_select_sishu_number_text").prop("disabled", false);
+                if(is_clear_sishu_number_text_color){
+                    $("#panel_select_sishu_number_text").prop("disabled", false);
+                }
             }
 
             // 一旦選択肢全体を非活性化
@@ -451,6 +497,20 @@ $(function() {
         // 文字色（番号）
         $(".control-panel-select-item-sishu-number-color-label-step2").click(function () {
             is_clear_sishu_number_text_color = true;
+
+            // labelから選択されたカラーを抽出
+            let selected_color = $(this).attr('for').replace('panel_select_sishu_number_text_color_','');
+            // color-only- で始まるclassすべて削除
+            $("#sishu_text_number_simulate").removeClass (function (index, css) {
+                return (css.match (/\bcolor-only-\S+/g) || []).join(' ');
+            });
+            // 選択した色をシミュレーションにセット
+            $("#sishu_text_number_simulate").addClass('color-only-'+selected_color);
+
+            // テキストエリアを活性化
+            if(is_clear_sishu_number_text_type){
+                $("#panel_select_sishu_number_text").prop("disabled", false);
+            }
 
             // 一旦選択肢全体を非活性化
             $(".control-panel-select-item-sishu-number-color-label-step2").css('background-color','#dddddd');
@@ -487,6 +547,8 @@ $(function() {
             if ($(this).val().length > 2 ) {
                 $(this).val( $(this).val().slice(0, 2) );
             }
+
+            $("#sishu_text_number_simulate").text($(this).val());
 
             // 完了している場合は、次へボタン活性化
             if(is_clear_sishu_step()){
@@ -570,28 +632,39 @@ $(function() {
                 // テキストは最終的に完了する直前に、項目名とともにhiddenのvalueを生成して送信する
 
                 ///// チーム名
-                if( $('#panel_select_sishu_team_text').val().length > 0 ){
+                ///// 最後に、テキスト、カラーが揃っている場合のみ送信すると判断する
+                if( !$('#panel_select_sishu_team_text').prop('disabled') &&
+                    is_clear_sishu_team_text &&
+                    is_clear_sishu_text_color &&
+                    is_clear_sishu_text_side_color
+                ){
                     $('#panel_select_sishu_team_text_hidden').val( '●【直接刺繍（二重刺繍）.チーム名-テキスト】:'+ $('#panel_select_sishu_team_text').val() );
                 }else{
                     $('#panel_select_sishu_team_text_hidden').prop('disabled', true);
                     // チーム名
                     $(".panel-select-sishu-shotai").prop("disabled", true);
-                    $(".panel-select-sishu-team-text-type").prop("disabled", true);
                     $(".panel-select-sishu-text-color").prop("disabled", true);
                     $(".panel-select-sishu-text-side-color").prop("disabled", true);
                 }
 
                 ///// 名前+(スペース)+番号
+                ///// 最後に、テキスト、カラーが揃っている場合のみ送信すると判断する
                 let name = '';
 
-                if( $('#panel_select_sishu_name_text').val().length > 0 ){
+                if( !$('#panel_select_sishu_name_text').prop('disabled') &&
+                    is_clear_sishu_name_text &&
+                    is_clear_sishu_name_text_color
+                ){
                     name += $('#panel_select_sishu_name_text').val();
                 }else{
                     // 名前がない場合はオプションも無効にする
                     $(".panel-select-sishu-name-text-type").prop("disabled", true);
                 }
 
-                if( $('#panel_select_sishu_number_text').val().length > 0 ){
+                if( !$('#panel_select_sishu_number_text').prop('disabled') &&
+                    is_clear_sishu_number_text &&
+                    is_clear_sishu_number_text_color
+                ){
                     if( name != '' ){
                         name += ' ';
                     }
@@ -791,7 +864,7 @@ $(function() {
             'padding-left':'9px',
             'padding-right':'9px',
         });
-        $("#next_step_button").hover(function() {
+        $("#back_step_button").hover(function() {
             // カーソルが当たった時の処理
             $(this).css("background-color", "#f56500");
         }, function() {
@@ -838,7 +911,7 @@ $(function() {
             'padding-left':'10px',
             'padding-right':'10px',
         });
-        $("#next_step_button").hover(function() {
+        $("#back_step_button").hover(function() {
             // カーソルが当たった時の処理
             $(this).css("background-color", "#d8d8d8");
         }, function() {
@@ -1001,32 +1074,38 @@ $(function() {
     }
 
     /**
-     * 刺繍ステップが完了したかを判定する
+     * 刺繍ステップが完了したかを判定する<br>
+     * 以下のいずれかがすべてtrueの場合、trueを返す。
      *
      * チーム名書体 is_clear_sishu_shotai
      * チーム名文字色（チーム名） is_clear_sishu_text_color
      * チーム名縁色 is_clear_sishu_text_side_color
      * チーム名テキスト is_clear_sishu_team_text
-     * チーム名テキストタイプ is_clear_sishu_team_text_type
      *
-     * or
-     *
-     * 名前文字色（名前+番号） is_clear_sishu_name_text_color
+     * 名前文字色 is_clear_sishu_name_text_color
      * 名前テキスト is_clear_sishu_name_text
      * 名前テキストタイプ is_clear_sishu_name_text_type
+     *
+     * 背番号文字色 is_clear_sishu_number_text_color
      * 背番号テキスト is_clear_sishu_number_text
      * 背番号テキストタイプ is_clear_sishu_number_text_type
      *
      */
     function is_clear_sishu_step(){
-
-        if( !(is_clear_sishu_shotai && is_clear_sishu_text_color && is_clear_sishu_text_side_color && is_clear_sishu_team_text && is_clear_sishu_team_text_type) ){
-            if ( !( (is_clear_sishu_name_text && is_clear_sishu_name_text_type && is_clear_sishu_name_text_color) || (is_clear_sishu_number_text && is_clear_sishu_number_text_type && is_clear_sishu_number_text_color) ) ){
-                // チーム名 or 名前 に不備がある場合
-                return false;
-            }
+        // チーム名
+        if(is_clear_sishu_shotai && is_clear_sishu_text_color && is_clear_sishu_text_side_color && is_clear_sishu_team_text){
+            return true;
         }
-        return true;
+        // 名前
+        if(is_clear_sishu_name_text && is_clear_sishu_name_text_type && is_clear_sishu_name_text_color){
+            return true;
+        }
+        // 背番号
+        if(is_clear_sishu_number_text && is_clear_sishu_number_text_type && is_clear_sishu_number_text_color){
+            return true;
+        }
+
+        return false;
     }
 
 });
