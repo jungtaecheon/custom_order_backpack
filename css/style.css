@@ -897,7 +897,7 @@ input[type=checkbox]:checked + .panel-select-agree-text-label::after {
     }
 
     .parts-selector-img {
-        width: 75px;
+        width: 110px;
         background-color: #f0f0f0;
         margin: 0;
         margin-left: 5px;
