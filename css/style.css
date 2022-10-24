@@ -498,6 +498,10 @@ input[type="checkbox"]{
     position: relative;
 }
 
+.panel-sishu-shotai-img-tag-none{
+    font-size: large;
+}
+
 /* 文字カラー（チーム名） */
 .control-panel-select-item-sishu-color-label-step2{
     position: relative;
